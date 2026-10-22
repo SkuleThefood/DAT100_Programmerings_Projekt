@@ -8,29 +8,34 @@ public class Customers {
 
     // a) Complete constructor
     public Customers(int size) {
-
-        // TODO
-
+        customers = new Customer[size];
     }
 
     // b) count number of non-null references
     public int countNonNull() {
-
-
         int count = 0;
 
-        // TODO
-
+        for (int i = 0; i<customers.length; i++){
+            if (customers[i] != null){
+                count++;
+            }
+        }
         return count;
     }
 
     // c) return reference to customer with given id (if exists)
     public Customer getCustomer(int customer_id) {
 
-        boolean funnet = false;
         Customer c = null;
 
-        // TODO
+        for (int i = 0; i<customers.length; i++){
+            if (customers[i] != null) {
+                if (customers[i].getCustomer_id() == customer_id) {
+                    c = customers[i];
+                    break;
+                }
+            }
+        }
 
         return c;
     }
@@ -40,7 +45,13 @@ public class Customers {
 
         boolean inserted = false;
 
-        // TODO
+        for (int i = 0; i<customers.length; i++){
+            if (customers[i] == null){
+                customers[i] = c;
+                inserted = true;
+                break;
+            }
+        }
 
         return inserted;
     }
@@ -48,10 +59,17 @@ public class Customers {
     // e) remove customer with given id from reference table
     public Customer removeCustomer(int customer_id) {
 
-        boolean deleted = false;
         Customer c = null;
 
-        // TODO
+        for (int i = 0; i<customers.length; i++){
+            if (customers[i] != null) {
+                if (customers[i].getCustomer_id() == customer_id) {
+                    c = customers[i];
+                    customers[i] = null;
+                    break;
+                }
+            }
+        }
 
         return c;
     }
@@ -59,9 +77,12 @@ public class Customers {
     // f) return reference table with all customers
     public Customer[] getCustomers() {
 
-        Customer[] customers = null;
+        int length = countNonNull();
+        Customer[] customers = new Customer[length];
 
-        // TODO
+        for (int i = 0; i<length; i++){
+            customers[i] = getCustomer(i+1);
+        }
 
         return customers;
     }

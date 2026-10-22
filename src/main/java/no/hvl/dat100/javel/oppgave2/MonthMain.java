@@ -1,6 +1,6 @@
 package no.hvl.dat100.javel.oppgave2;
 
-import no.hvl.dat100.javel.oppgave1.DayPowerData;
+import static no.hvl.dat100.javel.oppgave2.MonthlyPower.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -17,6 +17,13 @@ public class MonthMain {
         System.out.println("==============");
         System.out.println();
 
+        //print_PowerUsage(power_usage_month); //a
+        //print_PowerPrices(power_prices_month); //b
+        System.out.println("Total maantleg straum bruk: " + computePowerUsage(power_usage_month) + " kWh."); //c
+        System.out.println("Skjekk om maatleg bruk drar over norgespris sin grense: " + exceedThreshold(power_usage_month,5000)); //d
+        System.out.println("Straum kostnad for maanen: " + computeSpotPrice(power_usage_month,power_prices_month) + " NOK."); //e
+        System.out.println("Kostnad for maaneden med straumstoette: " + computePowerSupport(power_usage_month,power_prices_month) + " NOK."); //f
+        System.out.println("Kostnad for maaneden med norgespris: " + computeNorgesPrice(power_usage_month) + " NOK.");
         /*
         TODO
 

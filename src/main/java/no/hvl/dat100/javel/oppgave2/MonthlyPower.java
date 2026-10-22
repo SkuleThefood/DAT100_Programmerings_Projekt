@@ -7,14 +7,26 @@ public class MonthlyPower {
     // a) print power usage for a month
     public static void print_PowerUsage(double[][] usage) {
 
-        // TODO
+        for (int x = 0; x<usage.length; x++){
+            System.out.print("Dag " + (x+1) + ":  ");
+            for (int y = 0; y<usage[x].length; y++){
+                System.out.print("Time " + (y+1) + ": " + usage[x][y] + " kWh,   ");
+            }
+            System.out.println();
+        }
 
     }
 
     // b) print power prices for a month
     public static void print_PowerPrices(double[][] prices) {
 
-        // TODO
+        for (int x = 0; x<prices.length; x++){
+            System.out.print("Dag " + (x+1) + ":  ");
+            for (int y = 0; y<prices[x].length; y++){
+                System.out.print("Time " + (y+1) + ": " + prices[x][y] + " NOK,   ");
+            }
+            System.out.println();
+        }
 
     }
 
@@ -23,7 +35,11 @@ public class MonthlyPower {
 
         double sum = 0;
 
-        // TODO
+        for (int x = 0; x<usage.length; x++){
+            for (int y = 0; y<usage[x].length; y++){
+                sum = sum + usage[x][y];
+            }
+        }
 
         return sum;
     }
@@ -34,8 +50,17 @@ public class MonthlyPower {
         boolean exceeded = false;
         double usage = 0;
 
-        // TODO
-
+        for (int x = 0; x<powerusage.length; x++){
+            for (int y = 0; y<powerusage[x].length; y++){
+                usage = usage + powerusage[x][y];
+                if (usage > threshold){
+                    return true;
+                }
+            }
+            if (usage > threshold){
+                return true;
+            }
+        }
         return exceeded;
     }
 
@@ -44,17 +69,34 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
+        for (int x = 0; x<usage.length; x++){
+            for (int y = 0; y<usage[x].length; y++){
+                price = price + (usage[x][y]*prices[x][y]);
+            }
+        }
 
         return price;
     }
+
+    public static final double THRESHOLD = 0.9375;
+    public static final double PERCENTAGE = 0.9;
 
     // f) power support for the month
     public static double computePowerSupport(double[][] usage, double[][] prices) {
 
         double support = 0;
 
-        // TODO
+        for (int x = 0; x<usage.length; x++){
+            for (int y = 0; y<usage[x].length; y++) {
+                if (prices[x][y] < THRESHOLD) {
+                    support += prices[x][y] * usage[x][y];
+                }
+                if (prices[x][y] >= THRESHOLD) {
+                    support += (THRESHOLD) + ((prices[x][y] * usage[x][y]) - THRESHOLD) * (1 - PERCENTAGE);
+                }
+            }
+        }
+
 
         return support;
     }
@@ -64,7 +106,11 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
+        for (int x = 0; x < usage.length; x++) {
+            for (int y = 0; y < usage[x].length; y++) {
+                price = price + (usage[x][y] * 0.5);
+            }
+        }
 
         return price;
     }

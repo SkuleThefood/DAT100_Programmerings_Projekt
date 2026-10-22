@@ -1,16 +1,52 @@
 package no.hvl.dat100.javel.oppgave3;
 
-public class Customer {
+import static no.hvl.dat100.javel.oppgave3.PowerAgreementType.*;
 
-    // TODO - object variables (attributes)
+public class Customer {
+    String name;
+    String email;
+    int customer_id;
+    PowerAgreementType agreement;
+
 
     public Customer(String name, String email, int customer_id, PowerAgreementType agreement) {
-
-        // TODO
+        this.name = name;
+        this.email = email;
+        this.customer_id = customer_id;
+        this.agreement = agreement;
     }
 
-    // TODO - getter/setter methods for all objectvariables
+    public String getName(){
+        return name;
+    }
+    public String getEmail(){
+        return email;
+    }
+    public int getCustomer_id(){
+        return customer_id;
+    }
+    public PowerAgreementType getPowerAgreementType(){
+        return agreement;
+    }
+    public void setName(String nName){
+        name = nName;
+    }
+    public void setEmail(String nEmail){
+        email = nEmail;
+    }
+    public void setCustomer_id(int nCustomer_id){
+        customer_id = nCustomer_id;
+    }
+    public void setPoweragreementType(PowerAgreementType nAgreement){
+        agreement = nAgreement;
+    }
+    public String toString(){
+        String toReturn = "";
 
-    // TODO - toString method
+        toReturn = "Customer id: " + customer_id + ", Name: " + name + ", Email: " + email + ", Agreement: " + agreement;
+
+        return toReturn;
+    }
+
 
 }

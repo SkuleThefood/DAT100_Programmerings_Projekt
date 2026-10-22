@@ -1,6 +1,6 @@
 package no.hvl.dat100.javel.oppgave1;
 
-import no.hvl.dat100.javel.oppgave2.MonthlyPower;
+import static no.hvl.dat100.javel.oppgave1.DailyPower.*;
 
 public class DayMain {
 
@@ -16,13 +16,14 @@ public class DayMain {
         System.out.println("==============");
         System.out.println();
 
-        /*
-        TODO
-
-         Write code that tests the methods you implement in the DailyPower class
-         Remember to teste the methods as you implement them
-         Remember to also to check that you get the expected results
-         */
-
+        printPowerPrices(powerprices_day);
+        printPowerUsage(powerusage_day);
+        System.out.println("Total stroem bruk: " + computePowerUsage(powerusage_day) + " kWh.");
+        System.out.println("Total stroem pris for dagen: " + computeSpotPrice(powerusage_day, powerprices_day) + " NOK.");
+        System.out.println("Stroem pris for ein valt time med stoette: " + getSupport(powerusage_day[7], powerprices_day[9]) + " NOK.");
+        System.out.println("Stroem pris for dagen med stoette: " + computePowerSupport(powerusage_day, powerprices_day) + " NOK.");
+        System.out.println("Stroem pris for dagen med norgespris: " + computeNorgesPrice(powerusage_day) + " NOK.");
+        System.out.println("Mest stroem brukt innan ein time innan dagen er: " + findPeakUsage(powerusage_day) + " kWh.");
+        System.out.println("Gjennomsnittleg stroem brukt per time innan dagen: " + findAvgPower(powerusage_day) + " kWh.");
     }
 }
